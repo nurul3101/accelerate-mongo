@@ -1,0 +1,22 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextIndex", "fullTextSearch"]
+}
+
+datasource db {
+  provider  = "mongodb"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_DATABASE_URL")
+}
+
+model Task {
+  id          String   @id @map("_id")
+  created_at  DateTime @db.Date
+  date        String
+  description String
+  isCompleted Boolean
+  isImportant Boolean
+  title       String
+  updated_at  DateTime @db.Date
+  userId      String
+}
